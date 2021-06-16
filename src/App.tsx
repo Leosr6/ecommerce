@@ -1,5 +1,5 @@
 import { TabContext, TabPanel } from '@material-ui/lab';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import ProductCatalog from './products/ProductCatalog';
 import ProductDetail from './products/ProductDetail';
@@ -16,10 +16,18 @@ function App() {
   const [product, setProduct] = useState({} as IProductItem);
   const [tabValue, setTabValue] = useState(Tabs.Catalog);
 
+  useEffect(() => {
+    fetch("/heartbeat").then(res => {
+      if (res.status !== 200) {
+        alert("Backend is not running");
+      }
+    });
+  }, []);
+
   const onShowProductDetailClick = (product: IProductItem) => {
     setProduct(product);
     setTabValue(Tabs.Detail);
-  }
+  };
 
   return (
     <div className="App">
