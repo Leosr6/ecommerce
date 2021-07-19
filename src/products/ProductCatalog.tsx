@@ -15,7 +15,6 @@ interface ProductCatalogProps {
 };
 
 const ProductList = ProductListMock as IProductItem[];
-console.log(ProductList);
 
 function ProductCatalog({ showProductDetail }: ProductCatalogProps) {
     const classes = useStyles();
