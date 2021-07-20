@@ -5,8 +5,7 @@ import SideBar from '../reuse/Sidebar';
 
 const mainMenuItems = [
   "Ecommerce",
-  "More Ideas",
-  "More Ideas 2",
+  "Consult Price",
 ]
 
 const useStyles = makeStyles((theme) => ({
@@ -38,7 +37,7 @@ function Shell() {
           </Toolbar>
       </AppBar>
       <Box display="flex">
-        <SideBar onPressItem={switchApplication} itemList={mainMenuItems}/>
+        <SideBar onPressItem={switchApplication} itemList={mainMenuItems} style={{height: "90vh"}} className="border border-primary shadow-lg rounded" />
         {showProducts && 
           <Box flexGrow="1">
             <ProductLanding/>

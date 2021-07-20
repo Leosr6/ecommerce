@@ -4,25 +4,22 @@ import React, { useEffect, useState } from 'react';
 interface SideBarProps {
     onPressItem: (text: string) => void;
     itemList: string[];
+    className?: string;
+    style?: React.CSSProperties;
 };
 
-function SideBar({ onPressItem, itemList }: SideBarProps ) {
+function SideBar({ onPressItem, itemList, className, style }: SideBarProps ) {
     return (
-        <Box width="15%">
+        <Box width="15%" className={className} style={style}>
             <Divider />
             <List>
-            {itemList.map((text, index) => (
-                <ListItem button key={text} onClick={() => onPressItem(text)}>
-                    <ListItemText primary={text} />
-                </ListItem>
-            ))}
-            </List>
-            <Divider />
-            <List>
-            {[].map((text, index) => (
-                <ListItem button key={text}>
-                    <ListItemText primary={text} />
-                </ListItem>
+            {itemList.map((text) => (
+                <React.Fragment>
+                    <ListItem button key={text} onClick={() => onPressItem(text)}>
+                        <ListItemText primary={text} />
+                    </ListItem>
+                    <Divider />
+                </React.Fragment>
             ))}
             </List>
         </Box>
